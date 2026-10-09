@@ -56,7 +56,10 @@ Ver [`example/marcos.yaml`](./example/marcos.yaml) e o resultado em [`example/ou
 
 ```
 node skills/milestone-timeline/generate.test.js
+node skills/milestone-timeline/generate.integration.test.js
 ```
+
+Os testes de integração invocam o CLI real como subprocesso, usando apenas fixtures sintéticas em diretórios temporários — cobrem os caminhos YAML, JSON, roadmap estruturado sintético, tema externo e os erros de uso/diretório inválido.
 
 ## Escopo desta versão
 
