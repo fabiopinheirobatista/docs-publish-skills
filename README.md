@@ -5,7 +5,6 @@ Skills reutilizáveis para gerar documentação (Wikis, manuais em HTML) a parti
 ## Princípios
 
 - **Zero branding fixo**: nenhuma skill embute tema visual de nenhuma empresa. O tema (cores, fontes, espaçamento) é sempre fornecido externamente pelo usuário, seguindo o [Theme Contract](./theming/THEME-CONTRACT.md). Sem tema informado, aplica-se um fallback neutro.
-- **GSD opcional**: skills que podem se beneficiar de um projeto estruturado em [GSD](https://github.com/opengsd/gsd-core) detectam automaticamente `.planning/ROADMAP.md`, mas nunca exigem GSD — sempre aceitam um schema genérico (YAML/JSON) como alternativa.
 - **Multi-empresa**: pensado para ser usado em qualquer organização, não só na Accenture.
 
 ## Instalação
