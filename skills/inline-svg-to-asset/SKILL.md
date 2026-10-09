@@ -12,7 +12,7 @@ Quando um visualizador não renderiza corretamente SVG inline com `<script>` emb
 ## Como usar
 
 ```
-inline-svg-to-asset --input <arquivo.html|arquivo.md> --assets-dir <pasta/assets>
+node skills/inline-svg-to-asset/extract.js --input <arquivo.html|arquivo.md> --assets-dir <pasta/assets>
 ```
 
 - `--input`: arquivo HTML ou markdown contendo um ou mais blocos `<svg>...</svg>` inline
@@ -37,6 +37,12 @@ Nenhuma. Puramente estrutural/sintático — não depende de GSD nem de tema vis
 - Arquivo(s) `.svg` externos em `assets/`
 - Arquivo de entrada atualizado, com as referências inline substituídas por `<img>`
 
+## Testes
+
+```
+node skills/inline-svg-to-asset/extract.test.js
+```
+
 ## Escopo desta versão
 
-Define o contrato da skill. A lógica de parsing/extração ainda não está implementada.
+Lógica implementada: extração de blocos `<svg>...</svg>` com contagem de profundidade (não quebra SVG aninhado/sprites), nome derivado do atributo `id` (ou sequencial, com deduplicação), escrita dos arquivos em `--assets-dir` e substituição por `<img>` com caminho relativo. Se não houver SVG inline, não faz nada (sem erro).
