@@ -12,8 +12,12 @@ Quando for preciso comunicar o status de capacidades/features de um produto para
 ## Como usar
 
 ```
-status-dashboard --input <fonte> [--theme-css <tema.css>] --output <arquivo.html>
+node skills/status-dashboard/generate.js --input <fonte> --output <arquivo.html> [--theme-css <tema.css>]
 ```
+
+`<fonte>` pode ser:
+- um diretório de projeto GSD (detectado por `.planning/ROADMAP.md`), ou
+- um arquivo `.yaml`/`.yml`/`.json` seguindo o schema genérico abaixo
 
 ### Detecção automática de fonte (GSD opcional)
 
@@ -46,6 +50,18 @@ Nenhuma dependência obrigatória de GSD. Quando GSD está presente, é usado co
 
 - HTML com dashboard agrupado por status (produção / desenvolvimento / roadmap), em linguagem de negócio — sem nomes de fases técnicas, sem jargão.
 
+## Exemplo
+
+Ver [`example/items.yaml`](./example/items.yaml) e o resultado em [`example/output.html`](./example/output.html).
+
+## Testes
+
+```
+node skills/status-dashboard/generate.test.js
+```
+
 ## Escopo desta versão
 
-Define o contrato da skill. A lógica de leitura/parsing de GSD e do schema genérico, e a geração do HTML, ainda não estão implementadas.
+Lógica implementada: detecção de projeto GSD (lê `.planning/ROADMAP.md`, classifica fases concluídas como "produção" e o restante por heurística de palavras-chave — ver `skills/_shared/gsd-roadmap.js`), leitura do schema genérico (YAML/JSON), agrupamento por status e geração do HTML.
+
+**Importante sobre o modo GSD:** o GSD não tem conceito nativo de "categoria de negócio" nem linguagem de negócio traduzida — a skill usa o título da fase como está. Para controle preciso da linguagem exibida, use o schema genérico.
