@@ -41,7 +41,10 @@ Nenhuma. Puramente estrutural/sintático — não depende de nenhuma estrutura d
 
 ```
 node skills/inline-svg-to-asset/extract.test.js
+node skills/inline-svg-to-asset/extract.integration.test.js
 ```
+
+Os testes de integração invocam o CLI real como subprocesso, usando apenas fixtures sintéticas em diretórios temporários — cobrem extração única/múltipla, caso sem SVG (no-op), criação de `assets-dir` e os erros de uso/arquivo ausente.
 
 ## Escopo desta versão
 
