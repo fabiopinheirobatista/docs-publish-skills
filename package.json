@@ -1,0 +1,12 @@
+{
+  "name": "docs-publish-skills",
+  "private": true,
+  "description": "Skills reutilizaveis para geracao de documentacao (wiki/HTML), agnosticas de empresa e de framework de planejamento.",
+  "scripts": {
+    "test": "node skills/_shared/gsd-roadmap.test.js && node skills/md-to-html/convert.test.js && node skills/status-dashboard/generate.test.js && node skills/milestone-timeline/generate.test.js && node skills/inline-svg-to-asset/extract.test.js"
+  },
+  "dependencies": {
+    "js-yaml": "^5.4.3",
+    "marked": "^14.1.3"
+  }
+}

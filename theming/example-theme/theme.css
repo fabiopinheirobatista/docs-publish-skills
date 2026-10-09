@@ -1,0 +1,30 @@
+/*
+ * EXEMPLO DE REFERÊNCIA — NÃO USAR EM PRODUÇÃO.
+ * Demonstra o contrato definido em ../THEME-CONTRACT.md usando cores
+ * fictícias e neutras. Cada empresa deve fornecer seu próprio arquivo
+ * de tema seguindo o mesmo contrato.
+ */
+
+:root {
+  /* Cores */
+  --color-primary: #2b6cb0;
+  --color-secondary: #4a5568;
+  --color-background: #ffffff;
+  --color-text: #1a202c;
+  --color-text-muted: #718096;
+  --color-border: #e2e8f0;
+
+  /* Tipografia */
+  --font-family-base: system-ui, sans-serif;
+  --font-family-heading: system-ui, sans-serif;
+
+  /* Espaçamento */
+  --spacing-unit: 8px;
+  --radius-base: 4px;
+
+  /* Opcionais */
+  --color-success: #2f855a;
+  --color-warning: #b7791f;
+  --color-danger: #c53030;
+  --logo-url: none;
+}
