@@ -23,7 +23,7 @@ Requer Node.js. Dependência de parsing: [`marked`](https://www.npmjs.com/packag
 
 ## Dependências
 
-Nenhuma dependência de GSD, `.planning/`, ou qualquer estrutura de projeto específica. Funciona com qualquer arquivo markdown isolado.
+Nenhuma dependência de `.planning/` ou qualquer estrutura de projeto específica. Funciona com qualquer arquivo markdown isolado.
 
 ## Inputs
 

@@ -16,15 +16,15 @@ node skills/milestone-timeline/generate.js --input <fonte> --output <arquivo.htm
 ```
 
 `<fonte>` pode ser:
-- um diretório de projeto GSD (detectado por `.planning/ROADMAP.md`), ou
+- um diretório de projeto que siga o formato `.planning/ROADMAP.md` descrito abaixo, ou
 - um arquivo `.yaml`/`.yml`/`.json` seguindo o schema genérico abaixo
 
-### Fonte de dados (GSD opcional)
+### Fonte de dados
 
-- Se `--input` apontar para um diretório com `.planning/phases/`, a skill pode usar essa estrutura como fonte alternativa de marcos.
+- Se `--input` apontar para um diretório com `.planning/ROADMAP.md`, a skill pode usar a tabela de progresso desse arquivo como fonte alternativa de marcos (apenas fases com data de conclusão real).
 - Caso contrário, `--input` aponta para um arquivo genérico (YAML/JSON) com o schema abaixo.
 
-**GSD nunca é obrigatório.**
+**Essa detecção nunca é obrigatória.**
 
 ### Schema genérico
 
@@ -37,11 +37,11 @@ marcos:
 
 ## Dependências
 
-Nenhuma dependência obrigatória. GSD é uma fonte alternativa, não um requisito.
+Nenhuma dependência obrigatória. A detecção de `.planning/ROADMAP.md` é uma fonte alternativa, não um requisito.
 
 ## Inputs
 
-- Fonte de dados (GSD ou schema genérico)
+- Fonte de dados (`.planning/ROADMAP.md` ou schema genérico)
 - (opcional) Tema CSS conforme [Theme Contract](../../theming/THEME-CONTRACT.md)
 
 ## Outputs
@@ -60,6 +60,6 @@ node skills/milestone-timeline/generate.test.js
 
 ## Escopo desta versão
 
-Lógica implementada: detecção de projeto GSD (lê a tabela "## Progress" de `.planning/ROADMAP.md`, usando apenas fases com data de conclusão real), leitura do schema genérico, ordenação cronológica e geração do HTML.
+Lógica implementada: detecção de `.planning/ROADMAP.md` (lê a tabela "## Progress", usando apenas fases com data de conclusão real), leitura do schema genérico, ordenação cronológica e geração do HTML.
 
-**Importante sobre o modo GSD:** o GSD não tem campo de "impacto de negócio" — no modo GSD, `impacto_negocio` e `descricao_tecnica` usam o mesmo texto (nome da fase + status). Para a tradução real pra linguagem de negócio, use o schema genérico com `impacto_negocio` preenchido manualmente.
+**Importante sobre a detecção automática:** o formato `.planning/ROADMAP.md` não tem campo de "impacto de negócio" — nesse modo, `impacto_negocio` e `descricao_tecnica` usam o mesmo texto (nome da fase + status). Para a tradução real pra linguagem de negócio, use o schema genérico com `impacto_negocio` preenchido manualmente.

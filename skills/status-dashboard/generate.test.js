@@ -55,8 +55,8 @@ test("loadItems le schema generico JSON", () => {
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });
 
-test("loadItems detecta projeto GSD via .planning/ROADMAP.md", () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "status-dashboard-gsd-test-"));
+test("loadItems detecta roadmap estruturado via .planning/ROADMAP.md", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "status-dashboard-roadmap-test-"));
   fs.mkdirSync(path.join(tmpDir, ".planning"));
   fs.writeFileSync(
     path.join(tmpDir, ".planning", "ROADMAP.md"),
@@ -71,8 +71,8 @@ test("loadItems detecta projeto GSD via .planning/ROADMAP.md", () => {
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });
 
-test("loadItems lanca erro para diretorio sem GSD", () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "status-dashboard-no-gsd-test-"));
+test("loadItems lanca erro para diretorio sem roadmap estruturado", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "status-dashboard-no-roadmap-test-"));
   assert.throws(() => loadItems(tmpDir), /nao contem \.planning\/ROADMAP\.md/);
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });

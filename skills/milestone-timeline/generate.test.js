@@ -36,8 +36,8 @@ test("loadMilestones le schema generico YAML", () => {
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });
 
-test("loadMilestones detecta projeto GSD via .planning/ROADMAP.md", () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "milestone-gsd-test-"));
+test("loadMilestones detecta roadmap estruturado via .planning/ROADMAP.md", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "milestone-roadmap-test-"));
   fs.mkdirSync(path.join(tmpDir, ".planning"));
   fs.writeFileSync(
     path.join(tmpDir, ".planning", "ROADMAP.md"),
