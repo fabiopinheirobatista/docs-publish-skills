@@ -12,16 +12,18 @@ Sempre que precisar transformar um documento markdown (wiki, manual, release not
 ## Como usar
 
 ```
-md-to-html --input <arquivo.md> --output <arquivo.html> [--theme-css <tema.css>]
+node skills/md-to-html/convert.js --input <arquivo.md> --output <arquivo.html> [--theme-css <tema.css>]
 ```
 
 - `--input`: arquivo markdown de origem (obrigatório)
 - `--output`: caminho do HTML gerado (obrigatório)
-- `--theme-css`: caminho para um arquivo CSS que segue o [Theme Contract](../../theming/THEME-CONTRACT.md) (opcional — se omitido, aplica fallback neutro sem marca)
+- `--theme-css`: caminho para um arquivo CSS que segue o [Theme Contract](../../theming/THEME-CONTRACT.md) (opcional — se omitido, aplica um fallback neutro embutido, sem marca de nenhuma empresa)
+
+Requer Node.js. Dependência de parsing: [`marked`](https://www.npmjs.com/package/marked) (ver `package.json` na raiz do repo — rodar `npm install` antes do primeiro uso).
 
 ## Dependências
 
-Nenhuma. Não depende de GSD, `.planning/`, ou qualquer estrutura de projeto específica. Funciona com qualquer arquivo markdown isolado.
+Nenhuma dependência de GSD, `.planning/`, ou qualquer estrutura de projeto específica. Funciona com qualquer arquivo markdown isolado.
 
 ## Inputs
 
@@ -30,8 +32,18 @@ Nenhuma. Não depende de GSD, `.planning/`, ou qualquer estrutura de projeto esp
 
 ## Outputs
 
-- Arquivo HTML standalone, com o CSS do tema vinculado (via `<link>` ou inline, a definir na implementação) e conteúdo markdown convertido.
+- Arquivo HTML standalone (um único arquivo, CSS do tema embutido inline em `<style>`), com título extraído do primeiro `# Heading` do markdown (ou do nome do arquivo, se não houver) e o conteúdo convertido.
+
+## Exemplo
+
+Ver [`example/input.md`](./example/input.md) e o resultado gerado em [`example/output.html`](./example/output.html) (gerado com `theming/example-theme/theme.css`).
+
+## Testes
+
+```
+node skills/md-to-html/convert.test.js
+```
 
 ## Escopo desta versão
 
-Este documento define o contrato da skill (inputs, outputs, dependências). A lógica de parsing/geração de HTML ainda não está implementada — é a base estrutural para implementação posterior.
+Lógica de conversão implementada (`convert.js`): extração de título, parsing markdown → HTML via `marked`, resolução de tema (arquivo externo ou fallback neutro), geração de documento HTML standalone. Cobertura de testes básica em `convert.test.js`.
