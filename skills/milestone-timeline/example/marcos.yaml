@@ -1,0 +1,10 @@
+marcos:
+  - data: "2026-01-15"
+    descricao_tecnica: "Implementação do grafo híbrido de roteamento entre agentes"
+    impacto_negocio: "Cliente passou a ser direcionado automaticamente ao especialista certo, sem transferências manuais"
+  - data: "2026-03-02"
+    descricao_tecnica: "Migração do pipeline de validação de documentos para o novo motor OCR"
+    impacto_negocio: "Redução no tempo de análise de documentos enviados pelo cliente"
+  - data: "2026-05-20"
+    descricao_tecnica: "Adição de suporte multi-tenant via configuração por cliente"
+    impacto_negocio: "A mesma solução passou a poder atender um segundo cliente sem reescrever código"
