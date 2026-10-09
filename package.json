@@ -1,0 +1,11 @@
+{
+  "name": "docs-publish-skills",
+  "private": true,
+  "description": "Skills reutilizaveis para geracao de documentacao (wiki/HTML), agnosticas de empresa e de framework de planejamento.",
+  "scripts": {
+    "test": "node skills/md-to-html/convert.test.js"
+  },
+  "dependencies": {
+    "marked": "^14.1.3"
+  }
+}
