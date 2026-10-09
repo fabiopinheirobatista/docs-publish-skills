@@ -58,7 +58,10 @@ Ver [`example/items.yaml`](./example/items.yaml) e o resultado em [`example/outp
 
 ```
 node skills/status-dashboard/generate.test.js
+node skills/status-dashboard/generate.integration.test.js
 ```
+
+Os testes de integração invocam o CLI real como subprocesso (`node generate.js --input ... --output ...`), usando apenas fixtures sintéticas geradas em diretórios temporários — cobrem os caminhos YAML, JSON, GSD sintético, tema externo, fallback de tema, e os erros de uso/diretório inválido.
 
 ## Escopo desta versão
 
