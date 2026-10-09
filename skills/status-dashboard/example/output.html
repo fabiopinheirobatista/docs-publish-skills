@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Status</title>
+<style>
+/*
+ * EXEMPLO DE REFERÊNCIA — NÃO USAR EM PRODUÇÃO.
+ * Demonstra o contrato definido em ../THEME-CONTRACT.md usando cores
+ * fictícias e neutras. Cada empresa deve fornecer seu próprio arquivo
+ * de tema seguindo o mesmo contrato.
+ */
+
+:root {
+  /* Cores */
+  --color-primary: #2b6cb0;
+  --color-secondary: #4a5568;
+  --color-background: #ffffff;
+  --color-text: #1a202c;
+  --color-text-muted: #718096;
+  --color-border: #e2e8f0;
+
+  /* Tipografia */
+  --font-family-base: system-ui, sans-serif;
+  --font-family-heading: system-ui, sans-serif;
+
+  /* Espaçamento */
+  --spacing-unit: 8px;
+  --radius-base: 4px;
+
+  /* Opcionais */
+  --color-success: #2f855a;
+  --color-warning: #b7791f;
+  --color-danger: #c53030;
+  --logo-url: none;
+}
+
+
+body {
+  margin: 0;
+  padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+}
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--color-text);
+}
+a {
+  color: var(--color-primary);
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+code, pre {
+  background: color-mix(in srgb, var(--color-border) 30%, transparent);
+  border-radius: var(--radius-base);
+}
+pre {
+  padding: calc(var(--spacing-unit) * 1.5);
+  overflow-x: auto;
+}
+blockquote {
+  margin: 0;
+  padding-left: calc(var(--spacing-unit) * 2);
+  border-left: 3px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid var(--color-border);
+  padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
+}
+
+.status-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: calc(var(--spacing-unit) * 3);
+}
+.status-column h2 {
+  font-size: 1.1rem;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--spacing-unit);
+}
+.status-column[data-status="producao"] h2 { border-color: var(--color-success); }
+.status-column[data-status="desenvolvimento"] h2 { border-color: var(--color-warning); }
+.status-column[data-status="roadmap"] h2 { border-color: var(--color-text-muted); }
+.status-card {
+  background: color-mix(in srgb, var(--color-border) 15%, transparent);
+  border-radius: var(--radius-base);
+  padding: calc(var(--spacing-unit) * 1.5);
+  margin-bottom: var(--spacing-unit);
+}
+.status-card .categoria {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: calc(var(--spacing-unit) / 2);
+}
+.status-empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="content">
+<div class="status-board">
+<div class="status-column" data-status="producao">
+<h2>Em produção</h2>
+  <div class="status-card">
+    <strong>Atendimento conversacional via WhatsApp</strong>
+    <span class="categoria">Atendimento ao cliente</span>
+  </div>
+  <div class="status-card">
+    <strong>Roteamento inteligente entre especialistas</strong>
+    <span class="categoria">Atendimento ao cliente</span>
+  </div>
+</div>
+<div class="status-column" data-status="desenvolvimento">
+<h2>Em desenvolvimento</h2>
+  <div class="status-card">
+    <strong>Recomendação personalizada de produto</strong>
+    <span class="categoria">Vendas</span>
+  </div>
+  <div class="status-card">
+    <strong>Validação automática de documentos</strong>
+    <span class="categoria">Operações</span>
+  </div>
+</div>
+<div class="status-column" data-status="roadmap">
+<h2>No roadmap</h2>
+  <div class="status-card">
+    <strong>Assistente de onboarding multi-idioma</strong>
+    <span class="categoria">Expansão</span>
+  </div>
+  <div class="status-card">
+    <strong>Análise preditiva de risco</strong>
+    <span class="categoria">Risco</span>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>
