@@ -42,7 +42,10 @@ Ver [`example/input.md`](./example/input.md) e o resultado gerado em [`example/o
 
 ```
 node skills/md-to-html/convert.test.js
+node skills/md-to-html/convert.integration.test.js
 ```
+
+Os testes de integração invocam o CLI real como subprocesso, usando apenas fixtures sintéticas em diretórios temporários — cobrem conversão com/sem tema, extração/fallback de título e os erros de uso/arquivo ausente.
 
 ## Escopo desta versão
 
