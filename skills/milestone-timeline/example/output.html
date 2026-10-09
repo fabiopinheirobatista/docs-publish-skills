@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linha do Tempo de Entregas</title>
+<style>
+/*
+ * EXEMPLO DE REFERÊNCIA — NÃO USAR EM PRODUÇÃO.
+ * Demonstra o contrato definido em ../THEME-CONTRACT.md usando cores
+ * fictícias e neutras. Cada empresa deve fornecer seu próprio arquivo
+ * de tema seguindo o mesmo contrato.
+ */
+
+:root {
+  /* Cores */
+  --color-primary: #2b6cb0;
+  --color-secondary: #4a5568;
+  --color-background: #ffffff;
+  --color-text: #1a202c;
+  --color-text-muted: #718096;
+  --color-border: #e2e8f0;
+
+  /* Tipografia */
+  --font-family-base: system-ui, sans-serif;
+  --font-family-heading: system-ui, sans-serif;
+
+  /* Espaçamento */
+  --spacing-unit: 8px;
+  --radius-base: 4px;
+
+  /* Opcionais */
+  --color-success: #2f855a;
+  --color-warning: #b7791f;
+  --color-danger: #c53030;
+  --logo-url: none;
+}
+
+
+body {
+  margin: 0;
+  padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+}
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--color-text);
+}
+a {
+  color: var(--color-primary);
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+code, pre {
+  background: color-mix(in srgb, var(--color-border) 30%, transparent);
+  border-radius: var(--radius-base);
+}
+pre {
+  padding: calc(var(--spacing-unit) * 1.5);
+  overflow-x: auto;
+}
+blockquote {
+  margin: 0;
+  padding-left: calc(var(--spacing-unit) * 2);
+  border-left: 3px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid var(--color-border);
+  padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
+}
+
+.timeline {
+  position: relative;
+  padding-left: calc(var(--spacing-unit) * 3);
+  border-left: 2px solid var(--color-border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--spacing-unit) * -3.4);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+.timeline-date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+.timeline-impact {
+  font-weight: bold;
+  margin: calc(var(--spacing-unit) / 2) 0;
+}
+.timeline-tech {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+</style>
+</head>
+<body>
+<div class="content">
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-date">2026-01-15</div>
+    <div class="timeline-impact">Cliente passou a ser direcionado automaticamente ao especialista certo, sem transferências manuais</div>
+    <div class="timeline-tech">Implementação do grafo híbrido de roteamento entre agentes</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">2026-03-02</div>
+    <div class="timeline-impact">Redução no tempo de análise de documentos enviados pelo cliente</div>
+    <div class="timeline-tech">Migração do pipeline de validação de documentos para o novo motor OCR</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">2026-05-20</div>
+    <div class="timeline-impact">A mesma solução passou a poder atender um segundo cliente sem reescrever código</div>
+    <div class="timeline-tech">Adição de suporte multi-tenant via configuração por cliente</div>
+  </div>
+</div>
+</div>
+</body>
+</html>

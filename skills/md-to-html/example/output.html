@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo de Documento</title>
+<style>
+/*
+ * EXEMPLO DE REFERÊNCIA — NÃO USAR EM PRODUÇÃO.
+ * Demonstra o contrato definido em ../THEME-CONTRACT.md usando cores
+ * fictícias e neutras. Cada empresa deve fornecer seu próprio arquivo
+ * de tema seguindo o mesmo contrato.
+ */
+
+:root {
+  /* Cores */
+  --color-primary: #2b6cb0;
+  --color-secondary: #4a5568;
+  --color-background: #ffffff;
+  --color-text: #1a202c;
+  --color-text-muted: #718096;
+  --color-border: #e2e8f0;
+
+  /* Tipografia */
+  --font-family-base: system-ui, sans-serif;
+  --font-family-heading: system-ui, sans-serif;
+
+  /* Espaçamento */
+  --spacing-unit: 8px;
+  --radius-base: 4px;
+
+  /* Opcionais */
+  --color-success: #2f855a;
+  --color-warning: #b7791f;
+  --color-danger: #c53030;
+  --logo-url: none;
+}
+
+
+body {
+  margin: 0;
+  padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+}
+.content {
+  max-width: 820px;
+  margin: 0 auto;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--color-text);
+}
+a {
+  color: var(--color-primary);
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+code, pre {
+  background: color-mix(in srgb, var(--color-border) 30%, transparent);
+  border-radius: var(--radius-base);
+}
+pre {
+  padding: calc(var(--spacing-unit) * 1.5);
+  overflow-x: auto;
+}
+blockquote {
+  margin: 0;
+  padding-left: calc(var(--spacing-unit) * 2);
+  border-left: 3px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid var(--color-border);
+  padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
+}
+</style>
+</head>
+<body>
+<div class="content">
+<h1>Exemplo de Documento</h1>
+<p>Este é um exemplo de markdown convertido pela skill <code>md-to-html</code>, usando o tema de demonstração em <code>theming/example-theme/theme.css</code>.</p>
+<h2>Recursos suportados</h2>
+<ul>
+<li>Listas</li>
+<li><strong>Negrito</strong> e <em>itálico</em></li>
+<li><a href="https://example.com">Links</a></li>
+<li><code>código inline</code></li>
+</ul>
+<h3>Bloco de código</h3>
+<pre><code class="language-js">function ola() {
+  return &quot;mundo&quot;;
+}
+</code></pre>
+<h3>Citação</h3>
+<blockquote>
+<p>Isso é uma citação de exemplo.</p>
+</blockquote>
+<h3>Tabela</h3>
+<table>
+<thead>
+<tr>
+<th>Capacidade</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>md-to-html</td>
+<td>em desenvolvimento</td>
+</tr>
+<tr>
+<td>status-dashboard</td>
+<td>contrato definido</td>
+</tr>
+</tbody></table>
+<hr>
+<p>Este arquivo é apenas um exemplo de demonstração da skill — não é documentação de produto real.</p>
+
+</div>
+</body>
+</html>
