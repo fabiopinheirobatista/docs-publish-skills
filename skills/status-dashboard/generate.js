@@ -4,7 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 const { resolveTheme, buildHtmlDocument } = require("../_shared/html-document.js");
-const { loadRoadmapItems, isGsdProject } = require("../_shared/gsd-roadmap.js");
+const { loadRoadmapItems, hasStructuredRoadmap } = require("../_shared/planning-roadmap.js");
 const { loadDataFile, isDirectory } = require("../_shared/data-source.js");
 
 const STATUS_LABELS = {
@@ -67,11 +67,11 @@ function escapeHtml(str) {
 
 function loadItems(input) {
   if (isDirectory(input)) {
-    if (isGsdProject(input)) {
+    if (hasStructuredRoadmap(input)) {
       return loadRoadmapItems(input);
     }
     throw new Error(
-      `Diretorio informado (${input}) nao contem .planning/ROADMAP.md. Para projetos sem GSD, aponte --input para um arquivo .yaml/.yml/.json seguindo o schema generico.`
+      `Diretorio informado (${input}) nao contem .planning/ROADMAP.md. Para projetos que nao usam esse formato, aponte --input para um arquivo .yaml/.yml/.json seguindo o schema generico.`
     );
   }
   const data = loadDataFile(input);
@@ -117,7 +117,7 @@ function buildDashboardHtml(items) {
 
 function run(args) {
   if (!args.input || !args.output) {
-    throw new Error("Uso: generate.js --input <diretorio-gsd|arquivo.yaml|arquivo.json> --output <arquivo.html> [--theme-css <tema.css>]");
+    throw new Error("Uso: generate.js --input <diretorio-com-roadmap|arquivo.yaml|arquivo.json> --output <arquivo.html> [--theme-css <tema.css>]");
   }
 
   const items = loadItems(args.input);
@@ -142,7 +142,7 @@ function run(args) {
 if (require.main === module) {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
-    console.log("Uso: generate.js --input <diretorio-gsd|arquivo.yaml|arquivo.json> --output <arquivo.html> [--theme-css <tema.css>]");
+    console.log("Uso: generate.js --input <diretorio-com-roadmap|arquivo.yaml|arquivo.json> --output <arquivo.html> [--theme-css <tema.css>]");
     process.exit(0);
   }
   try {

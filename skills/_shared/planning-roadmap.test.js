@@ -10,8 +10,8 @@ const {
   classifyPhase,
   loadRoadmapItems,
   loadRoadmapMilestones,
-  isGsdProject,
-} = require("./gsd-roadmap.js");
+  hasStructuredRoadmap,
+} = require("./planning-roadmap.js");
 
 function test(name, fn) {
   try {
@@ -85,13 +85,13 @@ test("classifyPhase marca bloqueada/planejada como roadmap", () => {
   assert.strictEqual(classifyPhase({ checked: false, description: "planejada, aguardando priorizacao" }), "roadmap");
 });
 
-test("isGsdProject / loadRoadmapItems / loadRoadmapMilestones usam .planning/ROADMAP.md", () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "gsd-roadmap-test-"));
+test("hasStructuredRoadmap / loadRoadmapItems / loadRoadmapMilestones usam .planning/ROADMAP.md", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "planning-roadmap-test-"));
   const planningDir = path.join(tmpDir, ".planning");
   fs.mkdirSync(planningDir);
   fs.writeFileSync(path.join(planningDir, "ROADMAP.md"), SAMPLE_ROADMAP);
 
-  assert.strictEqual(isGsdProject(tmpDir), true);
+  assert.strictEqual(hasStructuredRoadmap(tmpDir), true);
 
   const items = loadRoadmapItems(tmpDir);
   assert.strictEqual(items.length, 5);
@@ -107,9 +107,9 @@ test("isGsdProject / loadRoadmapItems / loadRoadmapMilestones usam .planning/ROA
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });
 
-test("isGsdProject retorna false quando nao ha .planning/ROADMAP.md", () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "no-gsd-test-"));
-  assert.strictEqual(isGsdProject(tmpDir), false);
+test("hasStructuredRoadmap retorna false quando nao ha .planning/ROADMAP.md", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "no-roadmap-test-"));
+  assert.strictEqual(hasStructuredRoadmap(tmpDir), false);
   assert.strictEqual(loadRoadmapItems(tmpDir), null);
   assert.strictEqual(loadRoadmapMilestones(tmpDir), null);
   fs.rmSync(tmpDir, { recursive: true, force: true });

@@ -128,8 +128,8 @@ test("[integration] CLI usa fallback neutro quando --theme-css nao e informado",
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });
 
-test("[integration] CLI detecta projeto GSD sintetico via .planning/ROADMAP.md", () => {
-  const tmpDir = makeTmpDir("status-dashboard-it-gsd-");
+test("[integration] CLI detecta roadmap estruturado sintetico via .planning/ROADMAP.md", () => {
+  const tmpDir = makeTmpDir("status-dashboard-it-roadmap-");
   const planningDir = path.join(tmpDir, ".planning");
   const outputPath = path.join(tmpDir, "dashboard.html");
   fs.mkdirSync(planningDir);
@@ -156,7 +156,7 @@ test("[integration] CLI detecta projeto GSD sintetico via .planning/ROADMAP.md",
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });
 
-test("[integration] CLI falha com mensagem clara quando o diretorio nao e GSD nem schema valido", () => {
+test("[integration] CLI falha com mensagem clara quando o diretorio nao tem roadmap estruturado nem schema valido", () => {
   const tmpDir = makeTmpDir("status-dashboard-it-invalid-dir-");
   const outputPath = path.join(tmpDir, "out", "dashboard.html");
 

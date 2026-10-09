@@ -50,7 +50,7 @@ npm test
 ```
 docs-publish-skills/
   skills/
-    _shared/              # módulos comuns (tema, parser GSD, leitor YAML/JSON)
+    _shared/              # módulos comuns (tema, parser de roadmap estruturado, leitor YAML/JSON)
     md-to-html/
     status-dashboard/
     milestone-timeline/

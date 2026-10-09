@@ -11,12 +11,12 @@ function findRoadmapPath(inputDir) {
   return fs.existsSync(candidate) ? candidate : null;
 }
 
-function isGsdProject(inputDir) {
+function hasStructuredRoadmap(inputDir) {
   return findRoadmapPath(inputDir) !== null;
 }
 
 /**
- * Parses the "## Phases" checkbox list from a GSD ROADMAP.md:
+ * Parses the "## Phases" checkbox list from a structured ROADMAP.md:
  *   - [x] **Phase 1: Titulo** - descricao
  *   - [ ] **Phase 2: Titulo** - descricao
  */
@@ -39,7 +39,7 @@ function parsePhaseCheckboxList(roadmapContent) {
 }
 
 /**
- * Parses the "## Progress" markdown table from a GSD ROADMAP.md:
+ * Parses the "## Progress" markdown table from a structured ROADMAP.md:
  *   | Phase | Plans Complete | Status | Completed |
  *   |-------|-----------------|--------|-----------|
  *   | 1. Fundacao | -/- | Concluida | 2026-07-31 |
@@ -80,9 +80,9 @@ function parseProgressTable(roadmapContent) {
 
 /**
  * Best-effort classification into producao / desenvolvimento / roadmap.
- * GSD has no native concept of these three business buckets, so this is a
- * heuristic over the checkbox state + free-text description. For precise
- * control, use the generic schema instead of GSD auto-detection.
+ * This roadmap format has no native concept of these three business buckets,
+ * so this is a heuristic over the checkbox state + free-text description.
+ * For precise control, use the generic schema instead of auto-detection.
  */
 function classifyPhase({ checked, description }) {
   if (checked) return "producao";
@@ -120,7 +120,7 @@ function loadRoadmapMilestones(inputDir) {
 }
 
 module.exports = {
-  isGsdProject,
+  hasStructuredRoadmap,
   findRoadmapPath,
   parsePhaseCheckboxList,
   parseProgressTable,

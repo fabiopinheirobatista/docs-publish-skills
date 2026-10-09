@@ -26,7 +26,7 @@ node skills/inline-svg-to-asset/extract.js --input <arquivo.html|arquivo.md> --a
 
 ## Dependências
 
-Nenhuma. Puramente estrutural/sintático — não depende de GSD nem de tema visual (não usa o [Theme Contract](../../theming/THEME-CONTRACT.md), já que não gera HTML novo, só reestrutura o existente).
+Nenhuma. Puramente estrutural/sintático — não depende de nenhuma estrutura de projeto nem de tema visual (não usa o [Theme Contract](../../theming/THEME-CONTRACT.md), já que não gera HTML novo, só reestrutura o existente).
 
 ## Inputs
 

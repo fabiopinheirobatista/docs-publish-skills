@@ -16,19 +16,19 @@ node skills/status-dashboard/generate.js --input <fonte> --output <arquivo.html>
 ```
 
 `<fonte>` pode ser:
-- um diretório de projeto GSD (detectado por `.planning/ROADMAP.md`), ou
+- um diretório de projeto que siga o formato `.planning/ROADMAP.md` descrito abaixo, ou
 - um arquivo `.yaml`/`.yml`/`.json` seguindo o schema genérico abaixo
 
-### Detecção automática de fonte (GSD opcional)
+### Detecção automática de fonte
 
-A skill tenta detectar, nesta ordem, se o projeto usa GSD:
+A skill tenta detectar, nesta ordem, a fonte de dados:
 
-1. Se existir `.planning/ROADMAP.md` e/ou `.planning/STATE.md` no diretório indicado por `--input`, usa esses arquivos como fonte de dados (fases e seus status).
+1. Se existir `.planning/ROADMAP.md` no diretório indicado por `--input`, usa esse arquivo como fonte de dados (lista de fases com checkbox `- [x]`/`- [ ]`).
 2. Caso contrário, `--input` deve apontar para um arquivo genérico (YAML ou JSON) com o schema abaixo.
 
-**GSD nunca é obrigatório.** A skill funciona sem qualquer estrutura GSD.
+**Essa detecção nunca é obrigatória.** A skill funciona com qualquer projeto via o schema genérico.
 
-### Schema genérico (quando não há GSD)
+### Schema genérico (quando não há `.planning/ROADMAP.md`)
 
 ```yaml
 items:
@@ -39,11 +39,11 @@ items:
 
 ## Dependências
 
-Nenhuma dependência obrigatória de GSD. Quando GSD está presente, é usado como conveniência — nunca como requisito.
+Nenhuma dependência obrigatória de nenhuma estrutura de projeto específica. A detecção de `.planning/ROADMAP.md` é usada como conveniência quando presente — nunca como requisito.
 
 ## Inputs
 
-- Fonte de dados (GSD ou schema genérico)
+- Fonte de dados (`.planning/ROADMAP.md` ou schema genérico)
 - (opcional) Tema CSS conforme [Theme Contract](../../theming/THEME-CONTRACT.md)
 
 ## Outputs
@@ -61,10 +61,10 @@ node skills/status-dashboard/generate.test.js
 node skills/status-dashboard/generate.integration.test.js
 ```
 
-Os testes de integração invocam o CLI real como subprocesso (`node generate.js --input ... --output ...`), usando apenas fixtures sintéticas geradas em diretórios temporários — cobrem os caminhos YAML, JSON, GSD sintético, tema externo, fallback de tema, e os erros de uso/diretório inválido.
+Os testes de integração invocam o CLI real como subprocesso (`node generate.js --input ... --output ...`), usando apenas fixtures sintéticas geradas em diretórios temporários — cobrem os caminhos YAML, JSON, roadmap estruturado sintético, tema externo, fallback de tema, e os erros de uso/diretório inválido.
 
 ## Escopo desta versão
 
-Lógica implementada: detecção de projeto GSD (lê `.planning/ROADMAP.md`, classifica fases concluídas como "produção" e o restante por heurística de palavras-chave — ver `skills/_shared/gsd-roadmap.js`), leitura do schema genérico (YAML/JSON), agrupamento por status e geração do HTML.
+Lógica implementada: detecção de `.planning/ROADMAP.md` (classifica fases concluídas como "produção" e o restante por heurística de palavras-chave — ver `skills/_shared/planning-roadmap.js`), leitura do schema genérico (YAML/JSON), agrupamento por status e geração do HTML.
 
-**Importante sobre o modo GSD:** o GSD não tem conceito nativo de "categoria de negócio" nem linguagem de negócio traduzida — a skill usa o título da fase como está. Para controle preciso da linguagem exibida, use o schema genérico.
+**Importante sobre a detecção automática:** o formato `.planning/ROADMAP.md` não tem conceito nativo de "categoria de negócio" nem linguagem de negócio traduzida — a skill usa o título da fase como está. Para controle preciso da linguagem exibida, use o schema genérico.
